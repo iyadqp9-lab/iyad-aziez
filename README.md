@@ -1,27 +1,33 @@
 # IYAD AZIEZ OS
 
-A custom Android ROM research project targeting the Samsung Galaxy Tab A SM-T355Y.
+A custom Android ROM research project targeting the Samsung Galaxy Tab A **SM-T355Y**.
 
 ## Project goals
 
-- Verify the exact device model and hardware configuration before building.
-- Investigate whether Android 13 / LineageOS 20 is realistically supported on this model.
-- Identify compatible device tree, kernel, and vendor sources.
-- Plan a custom boot animation displaying **IYAD AZIEZ OS**.
-- Investigate safe root integration and battery-use improvements after a working build exists.
+- Verify the exact model and hardware before building.
+- Investigate Android 13 / LineageOS 20 compatibility.
+- Identify compatible device tree, kernel, common, and vendor sources.
+- Plan a custom **IYAD AZIEZ OS** boot animation.
+- Investigate root integration and battery-use improvements only after a working build exists.
+- Document a safe path to remote builds using Crave and GitHub.
 
 ## Target device
 
 - Model: Samsung Galaxy Tab A SM-T355Y
-- Device codename: **Unverified — do not assume a codename until confirmed from reliable device-specific sources.**
+- Research codename: `gt58lte` (device family lead; exact variant/product configuration still needs confirmation)
+- Android target: LineageOS 20 / Android 13 (under investigation)
 
-## Status
+## Project status
 
-Initial project setup and compatibility research.
+**Research/configuration stage — not a ready-to-flash ROM.** Public references suggest that SM-T355Y belongs to the `gt58lte` family and that community ROMs exist for this device family. That does not by itself verify a working Android 13 build for this exact variant.
+
+- [Device compatibility research](docs/DEVICE_COMPATIBILITY.md)
+- [Crave + GitHub build setup guide](docs/CRAVE_BUILD.md)
 
 ## Safety notes
 
-- Do not flash any image until its device compatibility and recovery method are verified.
-- Do not use files intended for a different model or variant.
-- Root access and battery improvements are goals, not guaranteed features.
-- Building Android ROMs generally requires a Linux computer with substantial storage and RAM; this repository is source/configuration work, not a ready-to-flash ROM.
+- Never flash a build until its target variant, build logs, checksum, recovery method, and installation instructions are verified.
+- Do not substitute a ROM for a similar model without explicit maintainer confirmation.
+- Root access, working LTE, and battery improvements are goals, not guarantees.
+- A Crave account/GitHub connection does not build a ROM by itself; compatible device, kernel, common, and vendor sources are required.
+- Never commit Crave credentials, signing keys, or passwords to this repository.
