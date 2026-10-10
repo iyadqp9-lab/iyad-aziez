@@ -6,7 +6,7 @@ The target is Samsung Galaxy Tab A 8.0 (2015), model **SM-T355Y**. Public bootlo
 
 ## Files now in this repository
 
-- [Historical source manifest](../manifests/lineage-18.1/gt58lte.xml): a partial LineageOS 18.1-era source baseline for the exact `gt58lte` device tree and vendor tree. It is **not** an Android 13 manifest and is **not yet a complete build manifest**: a compatible kernel repository/revision and all dependencies still need verification.
+- [Historical source manifest](../manifests/lineage-18.1/gt58lte.xml): a partial LineageOS 18.1-era source baseline for the exact `gt58lte` device tree and vendor tree. It is **not** an Android 13 manifest and has not been sync-tested or build-tested. The device tree declares `hardware/sony/timekeep`; the common tree declares additional shared dependencies, which are now listed. The kernel project is a candidate tree whose build script explicitly recognizes `gt58lte_aus` / SM-T355Y, but kernel integration remains unverified.
 - [Manifest notes](../manifests/README.md): intended workspace layout and status.
 
 The device makefile from the historical `gt58lte` tree inherits `vendor/lineage/config/common_full_tablet_wifionly.mk`. This is a useful starting point for a Wi-Fi-only product configuration, but it does not prove the whole ROM is free of telephony code or that a build will succeed. The SIM hardware does not need to be physically removed; a Wi-Fi-only software product simply does not target cellular functionality.
@@ -16,6 +16,7 @@ The device makefile from the historical `gt58lte` tree inherits `vendor/lineage/
 - Device identification: https://github.com/msm8916-mainline/lk2nd/blob/main/lk2nd/device/dts/msm8916/msm8916-samsung.dts — labels SM-T355Y as `gt58lte-aus`. This is **not** an Android ROM device tree.
 - Historical device tree: https://github.com/user20482020/device_samsung_gt58lte/tree/lineage-18.1-gt58lte
 - Historical vendor tree: https://github.com/user20482020/android_vendor_samsung_gt58lte/tree/lineage-18.1
+- Candidate kernel tree: https://github.com/Galaxy-MSM8916/android_kernel_samsung_msm8916/tree/lineage-17.1 — its build script lists `gt58lte_aus` / SM-T355Y, but this does not prove it builds with the selected Android source.
 - Historical LineageOS 18.1 manifest: https://gist.github.com/user20482020/5199ec836780d33150d00dbe40d8cfa4
 - LineageOS 20 MSM8916 manifest: https://github.com/retiredtab/LineageOS-build-manifests/blob/main/20/msm8916/msm8916-20.xml — it includes other Samsung MSM8916 tablets, but not the exact `gt58lte` SM-T355Y device tree and vendor tree. `gt58ltebmc` is SM-T357W and must not be substituted.
 
@@ -37,4 +38,4 @@ The device makefile from the historical `gt58lte` tree inherits `vendor/lineage/
 
 ## Current result
 
-A partial, historical Wi-Fi-only source baseline is now recorded in the project. It is a research starting point only; no ROM has been built, and no flashable ZIP exists. Android 13 remains blocked until compatible device, kernel, vendor, and Crave build sources are verified.
+A historical Wi-Fi-only source baseline and a Crave workflow default for it are now recorded. This is a first bring-up attempt on LineageOS 18.1 / Android 11, not Android 13. The source set and kernel integration remain untested; no ROM has been built, and no flashable ZIP exists. Android 13 remains blocked until compatible device, kernel, vendor, and Crave build sources are verified.
