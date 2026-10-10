@@ -8,59 +8,59 @@
   Device product inherits common_full_tablet_wifionly.mk.
 -->
 <manifest>
-    <remote name="github" fetch="https://github.com/" />
+    <remote name="iyadgithub" fetch="https://github.com/" />
 
     <!-- Exact gt58lte tablet device tree. -->
     <project name="user20482020/device_samsung_gt58lte"
              path="device/samsung/gt58lte"
-             remote="github"
+             remote="iyadgithub"
              revision="lineage-18.1-gt58lte" />
 
     <!-- Shared device/platform trees. -->
     <project name="BobbyDev21/android_device_samsung_gte-common"
              path="device/samsung/gte-common"
-             remote="github"
+             remote="iyadgithub"
              revision="lineage-18.1" />
     <project name="retiredtab/android_device_samsung_msm8916-common"
              path="device/samsung/msm8916-common"
-             remote="github"
+             remote="iyadgithub"
              revision="lineage-18.1" />
     <project name="LineageOS/android_device_samsung_qcom-common"
              path="device/samsung/qcom-common"
-             remote="github"
+             remote="iyadgithub"
              revision="lineage-18.1" />
 
     <!-- Common dependencies declared by the msm8916-common tree. -->
     <project name="LineageOS/android_hardware_samsung"
              path="hardware/samsung"
-             remote="github"
+             remote="iyadgithub"
              revision="lineage-18.1" />
     <project name="LineageOS/android_packages_resources_devicesettings"
              path="packages/resources/devicesettings"
-             remote="github"
+             remote="iyadgithub"
              revision="lineage-18.1" />
     <project name="LineageOS/android_external_sony_boringssl-compat"
              path="external/sony/boringssl-compat"
-             remote="github"
+             remote="iyadgithub"
              revision="lineage-18.1" />
     <project name="LineageOS/android_hardware_sony_timekeep"
              path="hardware/sony/timekeep"
-             remote="github"
+             remote="iyadgithub"
              revision="lineage-18.1" />
 
     <!-- Candidate kernel; build script explicitly lists gt58lte_aus / SM-T355Y. -->
     <project name="Galaxy-MSM8916/android_kernel_samsung_msm8916"
              path="kernel/samsung/msm8916"
-             remote="github"
+             remote="iyadgithub"
              revision="lineage-17.1" />
 
     <!-- Device-specific and shared proprietary files. -->
     <project name="user20482020/android_vendor_samsung_gt58lte"
              path="vendor/samsung/gt58lte"
-             remote="github"
+             remote="iyadgithub"
              revision="lineage-18.1" />
     <project name="BobbyDev21/android_vendor_samsung_msm8916-common"
              path="vendor/samsung/msm8916-common"
-             remote="github"
+             remote="iyadgithub"
              revision="lineage-18.1" />
 </manifest>
