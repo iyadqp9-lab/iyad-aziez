@@ -1,41 +1,40 @@
 # Source audit — Samsung Galaxy Tab A SM-T355Y
 
-**Status: BLOCKED — do not start a ROM build yet.**
+**Android 13 / LineageOS 20 status: BLOCKED. Historical Android 11 baseline: partial only.**
 
-This audit separates verified references from sources that are only candidates. The target is the Samsung Galaxy Tab A 8.0 (2015), model **SM-T355Y**. Public bootloader/device definitions identify this variant as `gt58lte-aus`, in the broader `gt58lte` family.
+The target is Samsung Galaxy Tab A 8.0 (2015), model **SM-T355Y**. Public bootloader/device definitions identify it as `gt58lte-aus`, in the broader `gt58lte` family.
+
+## Files now in this repository
+
+- [Historical source manifest](../manifests/lineage-18.1/gt58lte.xml): a partial LineageOS 18.1-era source baseline for the exact `gt58lte` device tree and vendor tree. It is **not** an Android 13 manifest and is **not yet a complete build manifest**: a compatible kernel repository/revision and all dependencies still need verification.
+- [Manifest notes](../manifests/README.md): intended workspace layout and status.
+
+The device makefile from the historical `gt58lte` tree inherits `vendor/lineage/config/common_full_tablet_wifionly.mk`. This is a useful starting point for a Wi-Fi-only product configuration, but it does not prove the whole ROM is free of telephony code or that a build will succeed. The SIM hardware does not need to be physically removed; a Wi-Fi-only software product simply does not target cellular functionality.
 
 ## Confirmed references
 
-- Device definition: https://github.com/msm8916-mainline/lk2nd/blob/main/lk2nd/device/dts/msm8916/msm8916-samsung.dts
-  - The definition labels SM-T355Y as `gt58lte-aus`.
-  - This is useful for identifying the hardware variant; it is **not** an Android ROM device tree.
-- Historical LineageOS 18.1 manifest for `gt58lte`: https://gist.github.com/user20482020/5199ec836780d33150d00dbe40d8cfa4
-  - It points to an older device tree, MSM8916 kernel, and vendor repositories.
-  - Its branches are LineageOS 18.1-era sources and must not be mixed into a LineageOS 20 build without maintained, compatible branches.
-- LineageOS 20 MSM8916 manifest maintained by retiredtab: https://github.com/retiredtab/LineageOS-build-manifests/blob/main/20/msm8916/msm8916-20.xml
-  - It includes sources for several Samsung MSM8916 tablets.
-  - It does **not** include an exact `gt58lte` SM-T355Y device tree and vendor tree. The `gt58ltebmc` entries are for a different variant and must not be substituted automatically.
-- Community LineageOS 20 reports exist for this device family, but reports do not prove that an arbitrary source combination is reproducible or that LTE works on SM-T355Y.
+- Device identification: https://github.com/msm8916-mainline/lk2nd/blob/main/lk2nd/device/dts/msm8916/msm8916-samsung.dts — labels SM-T355Y as `gt58lte-aus`. This is **not** an Android ROM device tree.
+- Historical device tree: https://github.com/user20482020/device_samsung_gt58lte/tree/lineage-18.1-gt58lte
+- Historical vendor tree: https://github.com/user20482020/android_vendor_samsung_gt58lte/tree/lineage-18.1
+- Historical LineageOS 18.1 manifest: https://gist.github.com/user20482020/5199ec836780d33150d00dbe40d8cfa4
+- LineageOS 20 MSM8916 manifest: https://github.com/retiredtab/LineageOS-build-manifests/blob/main/20/msm8916/msm8916-20.xml — it includes other Samsung MSM8916 tablets, but not the exact `gt58lte` SM-T355Y device tree and vendor tree. `gt58ltebmc` is SM-T357W and must not be substituted.
 
-## Required before building
+## Required before an Android 13 build
 
-All of the following must be found and reviewed on compatible LineageOS 20 branches:
+1. A maintained `gt58lte` device tree for LineageOS 20 / Android 13, or a documented and tested port.
+2. All common device trees from the device tree's dependency file, on compatible branches.
+3. A matching MSM8916 kernel tree and the correct SM-T355Y defconfig.
+4. Correct vendor blobs for `gt58lte` and any required common vendor files.
+5. A Crave workflow that syncs the selected manifest and actually runs the correct lunch/build commands.
+6. Successful build logs and device-specific recovery/install instructions before any flashing.
 
-1. A device tree explicitly for `gt58lte` / SM-T355Y, including a product makefile and valid `PRODUCT_DEVICE`.
-2. Its complete `lineage.dependencies` and all referenced common device trees.
-3. A matching MSM8916 kernel tree and defconfig for this device.
-4. Vendor blobs for `gt58lte` plus any common vendor repository required by the device tree.
-5. Any required Android 13 / LineageOS-UL patches documented by the maintainer.
-6. Build logs proving that the selected product completes the build.
-7. A checksum and device-specific installation/recovery instructions before any flashing.
+## Safety gates
 
-## Do not do these things
-
-- Do not use `gt58ltebmc` (SM-T357W) as if it were the same product as SM-T355Y.
-- Do not combine LineageOS 18.1-only device/vendor branches with a LineageOS 20 manifest and assume they will compile.
-- Do not rename `oxygen` to `gt58lte` in the Crave workflow and call it a device port.
-- Do not flash a ZIP unless it has been built for and checked against the exact model.
+- Never use `gt58ltebmc` (SM-T357W) as if it were SM-T355Y.
+- Never combine LineageOS 18.1-only sources with LineageOS 20 and assume they compile.
+- Never rename an unrelated device such as `oxygen` to `gt58lte` and call it a port.
+- Never flash a ZIP unless it is built for and checked against the exact model.
 
 ## Current result
 
-The project can safely store documentation and run source-presence checks, but it cannot yet produce a trustworthy build manifest for SM-T355Y. The build must remain blocked until the exact Android 13 device tree and matching vendor sources are verified.
+A partial, historical Wi-Fi-only source baseline is now recorded in the project. It is a research starting point only; no ROM has been built, and no flashable ZIP exists. Android 13 remains blocked until compatible device, kernel, vendor, and Crave build sources are verified.
