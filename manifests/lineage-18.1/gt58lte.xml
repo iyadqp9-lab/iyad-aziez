@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  IYAD AZIEZ OS research manifest for Samsung Galaxy Tab A SM-T355Y.
+  This is a historical LineageOS 18.1 (Android 11) baseline, NOT Android 13.
+  Sources have been checked for branch/path existence but the full sync and
+  build have not been tested. Kernel is a candidate older MSM8916 tree whose
+  build script explicitly knows gt58lte_aus; integration still needs testing.
+  Device product inherits common_full_tablet_wifionly.mk.
+-->
+<manifest>
+    <remote name="iyadgithub" fetch="https://github.com/" />
+
+    <!-- Exact gt58lte tablet device tree. -->
+    <project name="user20482020/device_samsung_gt58lte"
+             path="device/samsung/gt58lte"
+             remote="iyadgithub"
+             revision="lineage-18.1-gt58lte" />
+
+    <!-- Shared device/platform trees. -->
+    <project name="BobbyDev21/android_device_samsung_gte-common"
+             path="device/samsung/gte-common"
+             remote="iyadgithub"
+             revision="lineage-18.1" />
+    <project name="retiredtab/android_device_samsung_msm8916-common"
+             path="device/samsung/msm8916-common"
+             remote="iyadgithub"
+             revision="lineage-18.1" />
+    <project name="LineageOS/android_device_samsung_qcom-common"
+             path="device/samsung/qcom-common"
+             remote="iyadgithub"
+             revision="lineage-18.1" />
+
+    <!-- Common dependencies declared by the msm8916-common tree.
+         packages/resources/devicesettings is already in the base manifest. -->
+    <project name="LineageOS/android_hardware_samsung"
+             path="hardware/samsung"
+             remote="iyadgithub"
+             revision="lineage-18.1" />
+    <project name="LineageOS/android_external_sony_boringssl-compat"
+             path="external/sony/boringssl-compat"
+             remote="iyadgithub"
+             revision="lineage-18.1" />
+    <project name="LineageOS/android_hardware_sony_timekeep"
+             path="hardware/sony/timekeep"
+             remote="iyadgithub"
+             revision="lineage-18.1" />
+
+    <!-- Candidate kernel; build script explicitly lists gt58lte_aus / SM-T355Y. -->
+    <project name="Galaxy-MSM8916/android_kernel_samsung_msm8916"
+             path="kernel/samsung/msm8916"
+             remote="iyadgithub"
+             revision="lineage-17.1" />
+
+    <!-- Device-specific and shared proprietary files. -->
+    <project name="user20482020/android_vendor_samsung_gt58lte"
+             path="vendor/samsung/gt58lte"
+             remote="iyadgithub"
+             revision="lineage-18.1" />
+    <project name="BobbyDev21/android_vendor_samsung_msm8916-common"
+             path="vendor/samsung/msm8916-common"
+             remote="iyadgithub"
+             revision="lineage-18.1" />
+</manifest>
