@@ -30,13 +30,10 @@
              remote="iyadgithub"
              revision="lineage-18.1" />
 
-    <!-- Common dependencies declared by the msm8916-common tree. -->
+    <!-- Common dependencies declared by the msm8916-common tree.
+         packages/resources/devicesettings is already in the base manifest. -->
     <project name="LineageOS/android_hardware_samsung"
              path="hardware/samsung"
-             remote="iyadgithub"
-             revision="lineage-18.1" />
-    <project name="LineageOS/android_packages_resources_devicesettings"
-             path="packages/resources/devicesettings"
              remote="iyadgithub"
              revision="lineage-18.1" />
     <project name="LineageOS/android_external_sony_boringssl-compat"
