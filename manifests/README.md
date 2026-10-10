@@ -1,40 +1,40 @@
 # Android local manifests
 
-This folder is reserved for local manifests used by `repo` during Android source sync.
+This folder stores manifest files and notes for IYAD AZIEZ OS on Samsung Galaxy Tab A SM-T355Y (`gt58lte`).
 
-## Current status
+## Historical baseline available
 
-There is **no active build manifest yet** for IYAD AZIEZ OS / Samsung SM-T355Y (`gt58lte`). This is intentional: the available LineageOS 20 MSM8916 manifest does not provide an exact SM-T355Y device tree and matching vendor tree. The similar `gt58ltebmc` product is not an automatic substitute.
+[`lineage-18.1/gt58lte.xml`](lineage-18.1/gt58lte.xml) records known historical repositories for the SM-T355Y device tree, common device files, and vendor tree.
 
-Do not create or use `.repo/local_manifests/roomservice.xml` from old LineageOS 18.1 branches for a LineageOS 20 build. First verify the exact device tree, all dependencies, the kernel branch, and vendor blobs for the target variant.
+**Do not treat this as a ready-to-run manifest.** It is for LineageOS 18.1 / Android 11-era source investigation only. It intentionally does not claim an Android 13 build is possible, and a matching kernel source/revision has not been verified in this manifest. The product tree's Wi-Fi-only inheritance is a starting point for omitting cellular functionality, not proof that all telephony dependencies have been removed.
 
-## Planned layout after source verification
+## Android 13 / LineageOS 20 status
 
-Once the Android 13 sources are confirmed, the build workspace should contain:
+There is **no verified, build-ready Android 13 manifest yet** for SM-T355Y. The available LineageOS 20 MSM8916 manifest does not provide an exact `gt58lte` device tree and matching vendor tree. The similar `gt58ltebmc` product is for SM-T357W and must not be substituted.
+
+Before making an Android 13 manifest, verify:
+1. An exact `gt58lte` device tree that supports the target Android version.
+2. Every dependency declared by that tree, on compatible branches.
+3. A matching MSM8916 kernel tree and SM-T355Y defconfig.
+4. Exact device vendor blobs and any common vendor files.
+5. Crave sync/build commands and successful build logs.
+
+## Expected synced source layout
+
+The Android source workspace (not this project repository) should eventually contain:
 
 ```text
-.repo/
-└── local_manifests/
-    └── iyad-aziez-gt58lte.xml
-device/
-└── samsung/
-    ├── gt58lte/              # exact SM-T355Y device tree; not yet verified for LOS 20
-    ├── gte-common/           # if required by the verified device tree
-    └── msm8916-common/       # if required by the verified device tree
-kernel/
-└── samsung/
-    └── msm8916/              # matching branch/defconfig
-vendor/
-└── samsung/
-    ├── gt58lte/              # matching proprietary blobs
-    └── msm8916-common/       # if required by the verified device tree
+.repo/local_manifests/iyad-aziez-gt58lte.xml
+device/samsung/gt58lte/
+device/samsung/gte-common/       # if required
+device/samsung/msm8916-common/   # if required
+kernel/samsung/msm8916/
+vendor/samsung/gt58lte/
+vendor/samsung/msm8916-common/  # if required
 ```
 
-These are expected source-workspace paths, not files that should be fabricated inside this project repository. Android device trees, kernels, and proprietary vendor blobs belong in their own source repositories.
+Do not fabricate Android device trees, kernel files, or proprietary blobs. Keep the build blocked until source compatibility is verified.
 
-## Verified reference manifest
+Reference inventory: https://github.com/retiredtab/LineageOS-build-manifests/blob/main/20/msm8916/msm8916-20.xml
 
-The upstream MSM8916 LineageOS 20 manifest is useful as a source inventory, but it does not by itself provide a buildable SM-T355Y configuration:
-https://github.com/retiredtab/LineageOS-build-manifests/blob/main/20/msm8916/msm8916-20.xml
-
-See [the source audit](../docs/SOURCE_AUDIT.md) for the blockers that must be resolved before this folder contains an active manifest.
+See [the source audit](../docs/SOURCE_AUDIT.md) for details.
