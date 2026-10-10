@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--
-  IYAD AZIEZ OS source baseline for Samsung Galaxy Tab A SM-T355Y.
-  IMPORTANT: this is a historical LineageOS 18.1 (Android 11) source set,
-  NOT a verified LineageOS 20 / Android 13 manifest.
+  IYAD AZIEZ OS research manifest for Samsung Galaxy Tab A SM-T355Y.
+  IMPORTANT: this is a historical LineageOS 18.1 (Android 11) baseline,
+  NOT a verified LineageOS 20 / Android 13 manifest and NOT yet build-tested.
+  The kernel entry is a candidate older MSM8916 tree whose build script
+  explicitly knows gt58lte_aus; branch compatibility must still be validated.
   The product makefile inherits common_full_tablet_wifionly.mk.
-  Do not use this manifest for a flashable build until all revisions,
-  dependencies, kernel config and proprietary blobs are validated.
 -->
 <manifest>
     <remote name="github" fetch="https://github.com/" />
 
-    <!-- Exact tablet family device tree; branch is the published 18.1 branch. -->
+    <!-- Exact tablet family device tree; published historical 18.1 branch. -->
     <project name="user20482020/device_samsung_gt58lte"
              path="device/samsung/gt58lte"
              remote="github"
@@ -27,6 +27,12 @@
              path="device/samsung/msm8916-common"
              remote="github"
              revision="lineage-18.1" />
+
+    <!-- Candidate kernel; its build script explicitly lists gt58lte_aus / SM-T355Y. -->
+    <project name="Galaxy-MSM8916/android_kernel_samsung_msm8916"
+             path="kernel/samsung/msm8916"
+             remote="github"
+             revision="lineage-17.1" />
 
     <!-- Proprietary files for the exact gt58lte family, historical 18.1 branch. -->
     <project name="user20482020/android_vendor_samsung_gt58lte"
