@@ -6,75 +6,75 @@
   required before this can be considered build-ready or flashed.
 -->
 <manifest>
-    <remote name="github" fetch="https://github.com/" />
+    <remote name="iyadgithub" fetch="https://github.com/" />
 
     <!-- Device-specific tree: BoardConfig asserts SM-T355Y. -->
     <project name="user20482020/device_samsung_gt58lte"
              path="device/samsung/gt58lte"
-             remote="github"
+             remote="iyadgithub"
              revision="lineage-18.1-gt58lte"
              groups="device" />
 
     <!-- Samsung MSM8916 device/common trees. -->
     <project name="Galaxy-MSM8916/android_device_samsung_gte-common"
              path="device/samsung/gte-common"
-             remote="github"
+             remote="iyadgithub"
              revision="lineage-18.1"
              groups="device" />
     <project name="user20482020/android_device_samsung_msm8916-common"
              path="device/samsung/msm8916-common"
-             remote="github"
+             remote="iyadgithub"
              revision="lineage-18.1"
              groups="device" />
     <project name="LineageOS/android_device_samsung_qcom-common"
              path="device/samsung/qcom-common"
-             remote="github"
+             remote="iyadgithub"
              revision="lineage-18.1"
              groups="device" />
 
     <!-- SELinux policy for the MSM8916 common tree. -->
     <project name="retiredtab/msm8916_sepolicy_vendor"
              path="device/samsung/msm8916-common/sepolicy/vendor"
-             remote="github"
+             remote="iyadgithub"
              revision="lineage-18.1" />
 
     <!-- Samsung hardware and Sony compatibility/timekeep dependencies. -->
     <project name="LineageOS/android_hardware_samsung"
              path="hardware/samsung"
-             remote="github"
+             remote="iyadgithub"
              revision="lineage-18.1" />
     <project name="LineageOS/android_external_sony_boringssl-compat"
              path="external/sony/boringssl-compat"
-             remote="github"
+             remote="iyadgithub"
              revision="lineage-18.1" />
     <project name="LineageOS/android_hardware_sony_timekeep"
              path="hardware/sony/timekeep"
-             remote="github"
+             remote="iyadgithub"
              revision="lineage-18.1" />
 
     <!-- Kernel branch contains msm8916_sec_gt58lte_aus_defconfig for SM-T355Y. -->
     <project name="user20482020/android_kernel_samsung_msm8916"
              path="kernel/samsung/msm8916"
-             remote="github"
+             remote="iyadgithub"
              revision="lineage-18.1" />
 
     <!-- Proprietary trees aligned with the LineageOS 18.1 device sources. -->
     <project name="user20482020/vendor_samsung_msm8916-common"
              path="vendor/samsung/msm8916-common"
-             remote="github"
+             remote="iyadgithub"
              revision="lineage-18.1" />
     <project name="retiredtab/android_vendor_samsung_gte-common"
              path="vendor/samsung/gte-common"
-             remote="github"
+             remote="iyadgithub"
              revision="Q10.0" />
     <project name="user20482020/android_vendor_samsung_gt58lte"
              path="vendor/samsung/gt58lte"
-             remote="github"
+             remote="iyadgithub"
              revision="lineage-18.1" />
 
     <!-- ARM kernel toolchain required by this legacy MSM8916 kernel. -->
     <project name="Galaxy-MSM8916/android-prebuilts-gcc-linux-x86-arm-arm-eabi-7.2"
              path="prebuilts/gcc/linux-x86/arm/arm-eabi-7.2"
-             remote="github"
+             remote="iyadgithub"
              revision="master" />
 </manifest>
